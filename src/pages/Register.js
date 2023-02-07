@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterPage';
+import { createGlobalStyle } from 'styled-components';
 
 const initialState = {
   name: '',
@@ -12,12 +13,17 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState);
   const handleChange = (event) => {
-    console.log(event.target);
+    const name = event.target.name;
+    const value = event.target.value;
+    setValues({ ...values, [name]: value });
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target);
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      console.log('Please fill out all fields');
+    }
   };
 
   const toggleMember = () => {
