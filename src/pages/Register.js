@@ -14,17 +14,23 @@ const Register = () => {
   const handleChange = (event) => {
     console.log(event.target);
   };
+
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(event.target);
   };
+
+  const toggleMember = () => {
+    setValues({ ...values, isMember: !values.isMember });
+  };
+
   return (
     <Wrapper className='full-page'>
       <form className='form' onSubmit={onSubmit}>
         <Logo />
-        <h3>Login</h3>
+        <h3>{values.isMember ? 'Login' : 'Register'}</h3>
         {/*Name Field*/}
-        <FormRow type='text' name='name' value={values.name} handleChange={handleChange} />
+        {!values.isMember && <FormRow type='text' name='name' value={values.name} handleChange={handleChange} />}
         {/*Email Field*/}
         <FormRow type='email' name='email' value={values.email} handleChange={handleChange} />
         {/*Password Field*/}
@@ -32,6 +38,12 @@ const Register = () => {
         <button type='submit' className='btn btn-block'>
           Submit
         </button>
+        <p>
+          {values.isMember ? 'Not a member yet ?' : 'Already a member ?'}
+          <button type='button' onClick={toggleMember} className='member-btn'>
+            {values.isMember ? 'Register' : 'Login'}
+          </button>
+        </p>
       </form>
     </Wrapper>
   );
