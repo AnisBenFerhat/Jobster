@@ -6,10 +6,10 @@ const Error = () => {
   return (
     <Wrapper className='full-page'>
       <div>
-        <img src={img} alt='page not found' />
-        <h3>Oops, Page not Found</h3>
-        <p>Seems that we are not able to find the page you are looking for ..</p>
-        <Link to='/'>Back Home</Link>
+        <img src={img} alt='not found' />
+        <h3>Ohh! Page Not Found</h3>
+        <p>We can't seem to find the page you're looking for</p>
+        <Link to='/'>back home</Link>
       </div>
     </Wrapper>
   );
